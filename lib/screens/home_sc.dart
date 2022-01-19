@@ -9,6 +9,7 @@ import 'package:getwidget/getwidget.dart';
 import 'package:vegetrack/screens/hommm.dart';
 import 'package:vegetrack/screens/new_records.dart';
 import 'package:vegetrack/screens/setting_sc.dart';
+import 'package:vegetrack/screens/user_record.dart';
 import 'package:vegetrack/widgets/appbar_popmenu.dart';
 
 class Home_sc extends StatefulWidget {
@@ -24,7 +25,7 @@ class _Home_scState extends State<Home_sc> {
 
   List<Widget> bottomNavwidgets = <Widget>[
     hommm(),
-    new_records(),
+    user_records(),
     setting_sc()
   ];
 

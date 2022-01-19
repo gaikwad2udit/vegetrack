@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:vegetrack/screens/profile_page_sc.dart';
 
 class appbar_popmenu extends StatelessWidget {
   //const appbar_popmenu({ Key? key }) : super(key: key);
@@ -11,6 +12,10 @@ class appbar_popmenu extends StatelessWidget {
       itemBuilder: (ctx) {
         return [
           PopupMenuItem(
+            onTap: () {
+              print("hola");
+              Navigator.of(context).pushNamed(profile_page.routename);
+            },
             child: Row(
               children: [
                 CircleAvatar(
@@ -24,21 +29,6 @@ class appbar_popmenu extends StatelessWidget {
               ],
             ),
             value: 1,
-          ),
-          PopupMenuItem(
-            child: Row(
-              children: [
-                CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      'https://cdn.pixabay.com/photo/2017/11/10/05/46/group-2935521__340.png'),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text("family")
-              ],
-            ),
-            value: 2,
           ),
         ];
       },

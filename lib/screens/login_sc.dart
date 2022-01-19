@@ -194,6 +194,7 @@ class _auth_cardState extends State<auth_card> {
                       confirmpassword = value;
                       return null;
                     },
+
                     key: ValueKey("password"),
                     decoration: InputDecoration(labelText: "password"),
                   ),

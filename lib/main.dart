@@ -13,6 +13,7 @@ import 'package:vegetrack/screens/home_sc.dart';
 import 'package:vegetrack/screens/loding_sc.dart';
 import 'package:vegetrack/screens/login_sc.dart';
 import 'package:vegetrack/screens/new_vege_toggle.dart';
+import 'package:vegetrack/screens/profile_page_sc.dart';
 import 'package:vegetrack/screens/purchased_detail_sc.dart';
 import 'package:vegetrack/screens/remove.sc.dart';
 import 'package:vegetrack/screens/update_sc.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
+          print("loginin ini nn inin ni");
           return loading();
         }
         if (snapshot.hasData) {
@@ -76,6 +78,7 @@ class MyApp extends StatelessWidget {
                 update_sc.routename: (_) => update_sc(),
                 futurebuilderforupdate.routename: (_) =>
                     futurebuilderforupdate(),
+                profile_page.routename: (_) => profile_page(),
               },
             ),
           );

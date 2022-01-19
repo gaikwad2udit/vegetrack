@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:getwidget/components/list_tile/gf_list_tile.dart';
 import 'package:provider/provider.dart';
 import 'package:vegetrack/providers/entry.dart';
 import 'package:vegetrack/widgets/card_for_userpurchase.dart';
@@ -20,7 +21,7 @@ class current_detail extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            height: 150,
+            height: 250,
             width: double.infinity,
             child: ListView.builder(
               itemCount: entrydata.length,
@@ -36,9 +37,21 @@ class current_detail extends StatelessWidget {
           SizedBox(
             height: 100,
           ),
-          ListTile(
-              leading: Text("Total purchase amount:      "),
-              trailing: Text("\$$total")),
+          GFListTile(
+              subTitle: Text(""),
+              color: Colors.white,
+              avatar: Text(
+                "Total purchase amount:      ",
+                style: TextStyle(fontSize: 18),
+              ),
+              icon: Text(
+                "\$$total",
+                style: TextStyle(fontSize: 18),
+              )),
+
+          // ListTile(
+          //     leading: Text("Total purchase amount:      "),
+          //     trailing: Text("\$$total")),
           RaisedButton(
             onPressed: () {
               Provider.of<entry>(context, listen: false).getitemsbydate();

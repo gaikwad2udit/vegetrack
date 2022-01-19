@@ -28,7 +28,7 @@ class hommm extends StatelessWidget {
             InkWell(
               onTap: () {
                 Provider.of<sbjiBhaji>(context, listen: false).initialize();
-                print("dfadf");
+
                 Navigator.of(context)
                     .pushNamed(futurebuilderforvegetoggle.routename);
               },

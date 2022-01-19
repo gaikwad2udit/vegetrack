@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:getwidget/components/list_tile/gf_list_tile.dart';
 
 class cardforuserpurchase extends StatelessWidget {
   //const cardforuserpurchase({ Key? key }) : super(key: key);
@@ -11,10 +12,20 @@ class cardforuserpurchase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: Text(date.toString().substring(0, 15)),
-      title: Text(name),
-      trailing: RaisedButton(child: Text(price.toString())),
+    return GFListTile(
+      subTitle: Text(""),
+      color: Colors.white70,
+      avatar: Text(
+        name,
+        style: TextStyle(fontSize: 18),
+      ),
+      title: Text(date.toString().substring(0, 15)),
+      icon: Text("₹${price.toString()}"),
     );
+    // return ListTile(
+    //   leading: Text(date.toString().substring(0, 15)),
+    //   title: Text(name),
+    //   trailing: RaisedButton(child: Text(price.toString())),
+    // );
   }
 }

@@ -23,38 +23,40 @@ class user_records extends StatelessWidget {
     // });
 
     return Scaffold(
-      appBar: AppBar(),
       body: Container(
           height: double.infinity,
           width: double.infinity,
-          color: Colors.blue,
+          color: Colors.grey,
           padding: EdgeInsets.only(top: 120),
           child: ListView(
             children: [
               GFListTile(
                 subTitleText: formatDate(DateTime.now(), [DD]),
                 titleText: "Today",
-                color: Colors.grey,
+                color: Colors.blueGrey,
                 icon: Icon(Icons.calendar_view_month_rounded),
                 onTap: () async {
                   Navigator.of(context).pushNamed(week.Routename);
                 },
               ),
+              SizedBox(
+                height: 20,
+              ),
               GFListTile(
                 titleText: "Week",
                 subTitleText: formatDate(DateTime.now(), [W]),
-                color: Colors.grey,
+                color: Colors.blueGrey,
                 icon: Icon(Icons.calendar_view_month_rounded),
                 onTap: () {
                   Navigator.of(context).pushNamed(daywise.Routename);
                 },
               ),
-              GFListTile(
-                titleText: "This month",
-                subTitleText: formatDate(DateTime.now(), [MM]),
-                color: Colors.grey,
-                icon: Icon(Icons.calendar_view_month_rounded),
-              )
+              // GFListTile(
+              //   titleText: "This month",
+              //   subTitleText: formatDate(DateTime.now(), [MM]),
+              //   color: Colors.grey,
+              //   icon: Icon(Icons.calendar_view_month_rounded),
+              // )
             ],
           )),
     );

@@ -57,20 +57,45 @@ class week extends StatelessWidget {
                 child: ListView.builder(
                   itemCount: data.length,
                   itemBuilder: (context, index) {
-                    return ListTile(
-                      leading: Text(data[index]['purchseddata']),
-                      trailing: Text(data[index]['purchasedprice'].toString()),
+                    return GFListTile(
+                      //avatar: ,
+                      subTitle: Text(""),
+                      color: Colors.white,
+                      title: Text(
+                        data[index]['purchseddata'],
+                        style: TextStyle(fontSize: 18),
+                      ),
+                      icon: Text(
+                        "₹${data[index]['purchasedprice'].toString()}",
+                        style: TextStyle(fontSize: 20),
+                      ),
                     );
+                    // return ListTile(
+                    //   leading: Text(data[index]['purchseddata']),
+                    //   trailing: Text(data[index]['purchasedprice'].toString()),
+                    // );
                   },
                 ),
               ),
               SizedBox(
                 height: 20,
               ),
-              ListTile(
-                leading: Text("Total "),
-                trailing: Text(_total.toString()),
+              GFListTile(
+                color: Colors.white,
+                subTitle: Text(""),
+                title: Text(
+                  "Total ",
+                  style: TextStyle(fontSize: 20),
+                ),
+                icon: Text(
+                  _total.toString(),
+                  style: TextStyle(fontSize: 20),
+                ),
               )
+              // ListTile(
+              //   leading: Text("Total "),
+              //   trailing: Text(_total.toString()),
+              // )
             ],
           );
         },
