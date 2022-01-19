@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "370499614782",
+    "project_id": "vegetest-46f89",
+    "storage_bucket": "vegetest-46f89.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:370499614782:android:0bc5211060552b63cd796f",
+        "android_client_info": {
+          "package_name": "com.example.vegetrack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "370499614782-gqtm23883up2vmari8dscu1nq2d0010v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtj6pnVfWwSbj_gvVjcf6D2WllEB_aNRk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "370499614782-gqtm23883up2vmari8dscu1nq2d0010v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
