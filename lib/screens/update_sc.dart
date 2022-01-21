@@ -163,16 +163,16 @@ class _update_scState extends State<update_sc> {
 
                     // print(Fzregex.hasMatch(
                     //     workinglist[1].values.last, FzPattern.url));
-                    bool validURL =
-                        Uri.parse(workinglist[1].values.last).host == ''
-                            ? false
-                            : true;
-                    print(validURL);
+                    // bool validURL =
+                    //     Uri.parse(workinglist[1].values.last).host == ''
+                    //         ? false
+                    //         : true;
+                    // print(validURL);
 
-                    final Uri uri = Uri.tryParse(workinglist[1].values.last);
-                    if (!uri.hasAbsolutePath) {
-                      print('enter valid url');
-                    }
+                    // final Uri uri = Uri.tryParse(workinglist[1].values.last);
+                    // if (!uri.hasAbsolutePath) {
+                    //   print('enter valid url');
+                    // }
                     Image ad = Image.network("a");
                   },
                   label: Text('update'),

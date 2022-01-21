@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
             child: MaterialApp(
               debugShowCheckedModeBanner: false,
               theme: ThemeData(
-                  scaffoldBackgroundColor: Colors.grey,
+                  scaffoldBackgroundColor: Colors.grey[800],
                   appBarTheme: AppBarTheme(
                       titleSpacing: 85,
                       backgroundColor: Colors.brown,

@@ -43,6 +43,7 @@ class sbjiBhaji with ChangeNotifier {
 
   void addnewdata(String name, String imageurl) {
     _items.add(sbji(name: name, image: imageurl));
+    notifyListeners();
   }
 
   void removedata(List<String> names) {
@@ -65,11 +66,8 @@ class sbjiBhaji with ChangeNotifier {
           .collection('vegetables')
           .get()
           .then((value) {
-        print("yo");
-
         value.docs.forEach((element) {
           //  print(element['vegetable']);
-          print("yoyoy");
 
           _items.add(
               sbji(image: element['imageurl'], name: element['vegetable']));

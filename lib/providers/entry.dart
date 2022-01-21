@@ -58,6 +58,7 @@ class entry with ChangeNotifier {
 
   void initialize() {
     _temp.clear();
+    _pitems.clear();
     notifyListeners();
   }
 }

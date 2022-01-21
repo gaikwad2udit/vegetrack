@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:getwidget/getwidget.dart';
+import 'dart:math';
 
 class week extends StatelessWidget {
   //const week({ Key? key }) : super(key: key);
@@ -60,7 +61,8 @@ class week extends StatelessWidget {
                     return GFListTile(
                       //avatar: ,
                       subTitle: Text(""),
-                      color: Colors.white,
+                      color: Color((Random().nextDouble() * 0xFFFFFF).toInt())
+                          .withOpacity(1.0),
                       title: Text(
                         data[index]['purchseddata'],
                         style: TextStyle(fontSize: 18),

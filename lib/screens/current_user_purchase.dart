@@ -52,7 +52,11 @@ class current_detail extends StatelessWidget {
           // ListTile(
           //     leading: Text("Total purchase amount:      "),
           //     trailing: Text("\$$total")),
+          SizedBox(
+            height: 10,
+          ),
           RaisedButton(
+            color: Colors.greenAccent,
             onPressed: () {
               Provider.of<entry>(context, listen: false).getitemsbydate();
               Provider.of<entry>(context, listen: false).initialize();

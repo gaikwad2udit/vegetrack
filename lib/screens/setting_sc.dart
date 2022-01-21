@@ -11,7 +11,7 @@ class setting_sc extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 633,
-      color: Colors.grey,
+      // color: Colors.grey,
       child: Column(
         children: [
           SizedBox(

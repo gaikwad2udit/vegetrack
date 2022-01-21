@@ -1,7 +1,11 @@
+import 'dart:ui';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:date_format/date_format.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:getwidget/components/avatar/gf_avatar.dart';
 import 'package:getwidget/components/drawer/gf_drawer.dart';
 import 'package:getwidget/components/drawer/gf_drawer_header.dart';
@@ -47,9 +51,79 @@ class _Home_scState extends State<Home_sc> {
     }
   }
 
+  bool _islaodingfeedback = true;
+
+  var feedbacktextcontroller = TextEditingController();
+
+  void loadingscreen() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Theme(
+            data: Theme.of(context)
+                .copyWith(dialogBackgroundColor: Colors.greenAccent),
+            child: AlertDialog(
+              contentPadding: EdgeInsets.only(top: 10),
+              backgroundColor: Colors.greenAccent,
+              title: Text("Loading"),
+              content: Container(
+                height: 80,
+                width: 80,
+                child: GFLoader(),
+              ),
+            ));
+      },
+    );
+  }
+
+  void feedbackdialog() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("how can we improve :"),
+          content: Container(
+            height: 80,
+            child: TextField(
+              controller: feedbacktextcontroller,
+              maxLines: 5,
+              decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.grey[300],
+                  hintText: "enter feedback here"),
+            ),
+          ),
+          actions: [
+            RaisedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text("exit"),
+            ),
+            RaisedButton(
+              onPressed: () async {
+                if (_islaodingfeedback) {
+                  loadingscreen();
+                  await FirebaseFirestore.instance
+                      .collection('usersfeedback')
+                      .doc(FirebaseAuth.instance.currentUser.email)
+                      .set({'feedback': feedbacktextcontroller.text});
+                  feedbacktextcontroller.clear();
+                  print(feedbacktextcontroller.text);
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pop();
+                }
+              },
+              child: Text("submit"),
+            )
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    print(formatDate(DateTime.now(), [DD]));
     return Scaffold(
       appBar: AppBar(
         title: Text("veg app"),
@@ -58,32 +132,44 @@ class _Home_scState extends State<Home_sc> {
         ],
       ),
       drawer: GFDrawer(
+        color: Colors.indigo[200],
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             GFDrawerHeader(
               //curve: Curves.easeIn,
               closeButton: Text(''),
-              child: Text('username'),
+              child: Text(
+                FirebaseAuth.instance.currentUser.email,
+                style: TextStyle(fontSize: 20),
+              ),
               currentAccountPicture: GFAvatar(
+                backgroundColor: Colors.black38,
                 child: Text("Me"),
               ),
-              decoration: BoxDecoration(color: Colors.deepPurple[300]),
+              decoration: BoxDecoration(color: Colors.brown),
             ),
             ListTile(
+              onTap: () {
+                feedbackdialog();
+              },
+              enableFeedback: true,
               leading: Icon(Icons.feedback),
-              title: Text("feedback"),
-            ),
-            ListTile(
-              leading: Icon(Icons.exit_to_app),
-              title: Text("Exit"),
+              title: Text("feedback", style: TextStyle(fontSize: 20)),
             ),
             ListTile(
               onTap: () async {
                 await FirebaseAuth.instance.signOut();
               },
               leading: Icon(Icons.exit_to_app),
-              title: Text("sigout "),
+              title: Text("sigout ", style: TextStyle(fontSize: 20)),
+            ),
+            ListTile(
+              onTap: () {
+                SystemNavigator.pop();
+              },
+              leading: Icon(Icons.exit_to_app),
+              title: Text("Exit", style: TextStyle(fontSize: 20)),
             ),
           ],
         ),
@@ -101,8 +187,10 @@ class _Home_scState extends State<Home_sc> {
         unselectedItemColor: Colors.white,
         selectedIconTheme: IconThemeData(color: Colors.greenAccent, size: 35),
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.call), label: 'vegetables'),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Records'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.category), label: 'vegetables'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.data_usage), label: 'Records'),
           BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'setting')
         ],
         onTap: (value) {

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/components/loader/gf_loader.dart';
 import 'package:multi_select_item/multi_select_item.dart';
@@ -99,8 +100,15 @@ class _remove_scState extends State<remove_sc> {
                             .collection('vegetables')
                             .doc(element.id)
                             .delete()
-                            .then((value) {
+                            .then((value) async {
+                          print(element.data().values.first);
                           print("success");
+
+                          final ref = await FirebaseStorage.instance
+                              .ref()
+                              .child('vegetables')
+                              .child(element.data().values.first + '.jpg');
+                          await ref.delete();
                         });
                       });
                     });

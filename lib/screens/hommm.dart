@@ -20,7 +20,7 @@ class hommm extends StatelessWidget {
         height: 600,
         padding: EdgeInsets.only(top: 50),
         width: double.infinity,
-        color: Colors.black54,
+        //  color: Colors.black54,
         child: GridView(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2, crossAxisSpacing: 2),

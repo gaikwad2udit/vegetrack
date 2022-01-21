@@ -101,7 +101,7 @@ class _daywiseState extends State<daywise> {
             children: [
               GFListTile(
                 titleText: "Monday",
-                color: Colors.black12,
+                color: Colors.white70,
                 onTap: () {
                   if (ismonday == false) {
                     print(temp);
@@ -118,7 +118,7 @@ class _daywiseState extends State<daywise> {
               if (ismonday) datacontainer(monday),
               GFListTile(
                 titleText: "Tuesday",
-                color: Colors.black12,
+                color: Colors.white70,
                 onTap: () {
                   if (istuesday == false) {
                     setState(() {
@@ -134,7 +134,7 @@ class _daywiseState extends State<daywise> {
               if (istuesday) datacontainer(tuesday),
               GFListTile(
                 titleText: "Wednesday",
-                color: Colors.black12,
+                color: Colors.white70,
                 onTap: () {
                   if (iswednesday == false) {
                     setState(() {
@@ -150,7 +150,7 @@ class _daywiseState extends State<daywise> {
               if (iswednesday) datacontainer(wednesday),
               GFListTile(
                 titleText: "thrusday",
-                color: Colors.black12,
+                color: Colors.white70,
                 onTap: () {
                   if (isthruday == false) {
                     setState(() {
@@ -166,7 +166,7 @@ class _daywiseState extends State<daywise> {
               if (isthruday) datacontainer(thrusday),
               GFListTile(
                 titleText: "Friday",
-                color: Colors.black12,
+                color: Colors.white70,
                 onTap: () {
                   if (isfriday == false) {
                     setState(() {
@@ -182,7 +182,7 @@ class _daywiseState extends State<daywise> {
               if (isfriday) datacontainer(friday),
               GFListTile(
                 titleText: "saturday",
-                color: Colors.black12,
+                color: Colors.white70,
                 onTap: () {
                   if (issaturday == false) {
                     setState(() {
@@ -198,7 +198,7 @@ class _daywiseState extends State<daywise> {
               if (issaturday) datacontainer(saturday),
               GFListTile(
                 titleText: "Sunday",
-                color: Colors.black12,
+                color: Colors.white70,
                 onTap: () {
                   if (issunday == false) {
                     setState(() {

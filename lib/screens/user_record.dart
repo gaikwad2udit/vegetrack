@@ -26,7 +26,7 @@ class user_records extends StatelessWidget {
       body: Container(
           height: double.infinity,
           width: double.infinity,
-          color: Colors.grey,
+          // color: Colors.grey,
           padding: EdgeInsets.only(top: 120),
           child: ListView(
             children: [
