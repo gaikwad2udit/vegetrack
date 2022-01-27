@@ -10,6 +10,7 @@ class datacontainer extends StatelessWidget {
 
   double total = 0;
   void calculatetotal() {
+    print(day.length);
     day.forEach((element) {
       total += element['purchasedprice'];
     });

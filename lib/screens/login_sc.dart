@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -55,6 +56,9 @@ class _auth_cardState extends State<auth_card> {
         await authuser.signInWithEmailAndPassword(
             email: username, password: Password);
       } else {
+        await FirebaseFirestore.instance
+            .collection('emails')
+            .add({'email': username});
         await authuser.createUserWithEmailAndPassword(
             email: username, password: Password);
       }

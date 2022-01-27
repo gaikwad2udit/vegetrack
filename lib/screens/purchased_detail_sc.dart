@@ -119,7 +119,7 @@ class _purchased_detailState extends State<purchased_detail> {
                     for (int i = 0; i < keys.length; i++) {
                       await FirebaseFirestore.instance
                           .collection("users")
-                          .doc(FirebaseAuth.instance.currentUser.uid)
+                          .doc(FirebaseAuth.instance.currentUser.email)
                           .collection("Records")
                           .add(
                         {

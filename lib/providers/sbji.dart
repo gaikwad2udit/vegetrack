@@ -62,7 +62,7 @@ class sbjiBhaji with ChangeNotifier {
     if (i == 0) {
       await FirebaseFirestore.instance
           .collection('users')
-          .doc(FirebaseAuth.instance.currentUser.uid)
+          .doc(FirebaseAuth.instance.currentUser.email)
           .collection('vegetables')
           .get()
           .then((value) {
@@ -90,7 +90,7 @@ class sbjiBhaji with ChangeNotifier {
       print("heloo");
       await FirebaseFirestore.instance
           .collection('users')
-          .doc(FirebaseAuth.instance.currentUser.uid)
+          .doc(FirebaseAuth.instance.currentUser.email)
           .collection('vegetables')
           .get()
           .then((value) {

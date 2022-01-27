@@ -13,6 +13,8 @@ class user_records extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String email = ModalRoute.of(context).settings.arguments as String;
+    print(email);
     // FirebaseFirestore.instance
     //     .collection("users")
     //     .doc(FirebaseAuth.instance.currentUser.uid)
@@ -23,6 +25,7 @@ class user_records extends StatelessWidget {
     // });
 
     return Scaffold(
+      appBar: AppBar(),
       body: Container(
           height: double.infinity,
           width: double.infinity,
@@ -36,7 +39,8 @@ class user_records extends StatelessWidget {
                 color: Colors.blueGrey,
                 icon: Icon(Icons.calendar_view_month_rounded),
                 onTap: () async {
-                  Navigator.of(context).pushNamed(week.Routename);
+                  Navigator.of(context)
+                      .pushNamed(week.Routename, arguments: email);
                 },
               ),
               SizedBox(
@@ -48,7 +52,8 @@ class user_records extends StatelessWidget {
                 color: Colors.blueGrey,
                 icon: Icon(Icons.calendar_view_month_rounded),
                 onTap: () {
-                  Navigator.of(context).pushNamed(daywise.Routename);
+                  Navigator.of(context)
+                      .pushNamed(daywise.Routename, arguments: email);
                 },
               ),
               // GFListTile(

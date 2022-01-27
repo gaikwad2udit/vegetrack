@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:vegetrack/screens/profile_page_sc.dart';
+import 'package:vegetrack/screens/testingnew.dart';
 
 class setting_sc extends StatelessWidget {
   //const setting_sc({ Key? key }) : super(key: key);
@@ -42,6 +43,19 @@ class setting_sc extends StatelessWidget {
               maxRadius: 50,
               child: Text(
                 "logout",
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).pushNamed(testingnew.Routename);
+            },
+            child: CircleAvatar(
+              backgroundColor: Colors.redAccent,
+              maxRadius: 50,
+              child: Text(
+                "test",
                 style: TextStyle(fontSize: 20),
               ),
             ),

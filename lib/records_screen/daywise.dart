@@ -29,46 +29,71 @@ class _daywiseState extends State<daywise> {
   List friday = [];
   List saturday = [];
   List sunday = [];
-  List temp = [];
+  List<Map<String, dynamic>> temp = [];
 
-  void query() async {
+  Future<void> query() async {
+    temp.clear();
     try {
-      await FirebaseFirestore.instance
-          .collection("users")
-          .doc(FirebaseAuth.instance.currentUser.uid)
-          .collection("Records")
-          .get()
-          .then((value) {
-        value.docs.forEach((element) {
-          temp.add(element.data());
+      if (ModalRoute.of(context).settings.arguments as String == null) {
+        print("no arg");
+        await FirebaseFirestore.instance
+            .collection("users")
+            .doc(FirebaseAuth.instance.currentUser.email)
+            .collection("Records")
+            .get()
+            .then((value) {
+          value.docs.forEach((element) {
+            temp.add(element.data());
+          });
         });
-      });
-      print(temp);
+      } else {
+        print("arg");
+        await FirebaseFirestore.instance
+            .collection("users")
+            .doc(ModalRoute.of(context).settings.arguments as String)
+            .collection("Records")
+            .get()
+            .then((value) {
+          value.docs.forEach((element) {
+            temp.add(element.data());
+          });
+        });
+      }
+      // print(temp);
     } on PlatformException catch (error) {
       print("plateform error");
     } catch (error) {
       print("unknown error");
     }
+
     fetching();
   }
 
   void fetching() {
+    monday.clear();
+    tuesday.clear();
+    wednesday.clear();
+    thrusday.clear();
+    friday.clear();
+    saturday.clear();
+    sunday.clear();
+
     temp.forEach((element) {
+      print(element.values.first);
       if (element['day'] == 'Monday') {
         monday.add(element);
+        print(monday);
       }
       if (element['day'] == 'Tuesday') {
         tuesday.add(element);
       }
-      if (element['day'] == "wednesday") {
+      if (element['day'] == "Wednesday") {
         wednesday.add(element);
       }
-      if (element['day'] == "Thrusday") {
+      if (element['day'] == "Thursday") {
         thrusday.add(element);
       }
       if (element['day'] == "Friday") {
-        print("object");
-        print(element);
         friday.add(element);
       }
       if (element['day'] == 'Saturday') {
@@ -83,14 +108,14 @@ class _daywiseState extends State<daywise> {
   @override
   void initState() {
     // TODO: implement initState
-
     super.initState();
-    query();
+    Future.microtask(() {
+      query();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    print(friday);
     return Scaffold(
       appBar: AppBar(),
       body: Container(

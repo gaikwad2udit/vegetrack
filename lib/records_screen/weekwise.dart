@@ -7,25 +7,48 @@ import 'package:flutter/services.dart';
 import 'package:getwidget/getwidget.dart';
 import 'dart:math';
 
-class week extends StatelessWidget {
+class week extends StatefulWidget {
   //const week({ Key? key }) : super(key: key);
   static const Routename = "week";
+
+  @override
+  State<week> createState() => _weekState();
+}
+
+class _weekState extends State<week> {
   List data = [];
 
   Future query() async {
     try {
-      await FirebaseFirestore.instance
-          .collection("users")
-          .doc(FirebaseAuth.instance.currentUser.uid)
-          .collection("Records")
-          .where('day', isEqualTo: formatDate(DateTime.now(), [DD]))
-          .get()
-          .then((value) {
-        value.docs.forEach((element) {
-          data.add(element.data());
+      if (ModalRoute.of(context).settings.arguments == null) {
+        print("no arguments passed");
+        await FirebaseFirestore.instance
+            .collection("users")
+            .doc(FirebaseAuth.instance.currentUser.email)
+            .collection("Records")
+            .where('day', isEqualTo: formatDate(DateTime.now(), [DD]))
+            .get()
+            .then((value) {
+          value.docs.forEach((element) {
+            print(element.data());
+            data.add(element.data());
+          });
         });
-      });
-      print('yo yo ');
+      } else {
+        print("arugments passed");
+        await FirebaseFirestore.instance
+            .collection("users")
+            .doc(ModalRoute.of(context).settings.arguments as String)
+            .collection("Records")
+            .where('day', isEqualTo: formatDate(DateTime.now(), [DD]))
+            .get()
+            .then((value) {
+          value.docs.forEach((element) {
+            data.add(element.data());
+          });
+        });
+      }
+
       print(data);
       calculatetotal();
     } on PlatformException catch (e) {
@@ -36,6 +59,7 @@ class week extends StatelessWidget {
   }
 
   double _total = 0;
+
   void calculatetotal() {
     data.forEach((element) {
       _total = _total + element['purchasedprice'];

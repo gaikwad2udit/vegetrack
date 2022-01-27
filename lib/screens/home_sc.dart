@@ -10,8 +10,10 @@ import 'package:getwidget/components/avatar/gf_avatar.dart';
 import 'package:getwidget/components/drawer/gf_drawer.dart';
 import 'package:getwidget/components/drawer/gf_drawer_header.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:vegetrack/screens/family/family_sc.dart';
 import 'package:vegetrack/screens/hommm.dart';
 import 'package:vegetrack/screens/new_records.dart';
+import 'package:vegetrack/screens/records_home_sc.dart';
 import 'package:vegetrack/screens/setting_sc.dart';
 import 'package:vegetrack/screens/user_record.dart';
 import 'package:vegetrack/widgets/appbar_popmenu.dart';
@@ -29,8 +31,9 @@ class _Home_scState extends State<Home_sc> {
 
   List<Widget> bottomNavwidgets = <Widget>[
     hommm(),
-    user_records(),
-    setting_sc()
+    records_home_sc(),
+    family_sc(),
+    setting_sc(),
   ];
 
   void showscreen(int value) {
@@ -45,6 +48,11 @@ class _Home_scState extends State<Home_sc> {
       });
     }
     if (value == 2) {
+      setState(() {
+        _selected = value;
+      });
+    }
+    if (value == 3) {
       setState(() {
         _selected = value;
       });
@@ -180,9 +188,11 @@ class _Home_scState extends State<Home_sc> {
         children: bottomNavwidgets,
       )),
       bottomNavigationBar: BottomNavigationBar(
+        fixedColor: Colors.greenAccent,
+        type: BottomNavigationBarType.fixed,
         selectedFontSize: 15,
-        selectedItemColor: Colors.greenAccent,
-        backgroundColor: Colors.black87,
+        //selectedItemColor: Colors.greenAccent,
+        backgroundColor: Colors.black54,
         unselectedIconTheme: IconThemeData(color: Colors.white, size: 20),
         unselectedItemColor: Colors.white,
         selectedIconTheme: IconThemeData(color: Colors.greenAccent, size: 35),
@@ -191,7 +201,9 @@ class _Home_scState extends State<Home_sc> {
               icon: Icon(Icons.category), label: 'vegetables'),
           BottomNavigationBarItem(
               icon: Icon(Icons.data_usage), label: 'Records'),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'setting')
+          BottomNavigationBarItem(
+              icon: Icon(Icons.family_restroom), label: 'family'),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'setting'),
         ],
         onTap: (value) {
           showscreen(value);

@@ -115,7 +115,7 @@ class _add_scState extends State<add_sc> {
 
                     await FirebaseFirestore.instance
                         .collection("users")
-                        .doc(FirebaseAuth.instance.currentUser.uid)
+                        .doc(FirebaseAuth.instance.currentUser.email)
                         .collection("vegetables")
                         .doc()
                         .set({

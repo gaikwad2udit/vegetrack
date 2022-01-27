@@ -88,7 +88,7 @@ class _remove_scState extends State<remove_sc> {
                   for (int i = 0; i < selectedvege.length; i++) {
                     await FirebaseFirestore.instance
                         .collection('users')
-                        .doc(FirebaseAuth.instance.currentUser.uid)
+                        .doc(FirebaseAuth.instance.currentUser.email)
                         .collection("vegetables")
                         .where('vegetable', isEqualTo: selectedvege[i])
                         .get()
@@ -96,7 +96,7 @@ class _remove_scState extends State<remove_sc> {
                       value.docs.forEach((element) {
                         FirebaseFirestore.instance
                             .collection("users")
-                            .doc(FirebaseAuth.instance.currentUser.uid)
+                            .doc(FirebaseAuth.instance.currentUser.email)
                             .collection('vegetables')
                             .doc(element.id)
                             .delete()
