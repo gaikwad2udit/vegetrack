@@ -68,7 +68,7 @@ class sbjiBhaji with ChangeNotifier {
           .then((value) {
         value.docs.forEach((element) {
           //  print(element['vegetable']);
-
+          print(element.data());
           _items.add(
               sbji(image: element['imageurl'], name: element['vegetable']));
         });

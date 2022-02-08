@@ -19,7 +19,6 @@ import 'package:vegetrack/screens/profile_page_sc.dart';
 import 'package:vegetrack/screens/purchased_detail_sc.dart';
 import 'package:vegetrack/screens/records_home_sc.dart';
 import 'package:vegetrack/screens/remove.sc.dart';
-import 'package:vegetrack/screens/testingnew.dart';
 import 'package:vegetrack/screens/update_sc.dart';
 import 'package:vegetrack/screens/user_record.dart';
 import 'package:vegetrack/widgets/future_builderforvegetoggle.dart';
@@ -83,7 +82,6 @@ class MyApp extends StatelessWidget {
                 futurebuilderforupdate.routename: (_) =>
                     futurebuilderforupdate(),
                 profile_page.routename: (_) => profile_page(),
-                testingnew.Routename: (_) => testingnew(),
                 family_sc.routename: (_) => family_sc(),
                 records_home_sc.routename: (_) => records_home_sc(),
                 friends_records_sc.routename: (_) => friends_records_sc(),

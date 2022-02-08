@@ -56,8 +56,16 @@ class _friends_records_scState extends State<friends_records_sc> {
                     },
                     child: GFListTile(
                       color: Colors.white70,
-                      avatar: CircleAvatar(),
-                      title: Text(friends[index]),
+                      avatar: CircleAvatar(
+                        child: Icon(Icons.person),
+                      ),
+                      title: Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Text(
+                          friends[index],
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
                     ),
                   );
                 },
